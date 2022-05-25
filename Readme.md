@@ -33,7 +33,13 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ```bash
 
 # Basta clonar o repositório e abrir o arquivo index.html no seu navegador
-$ git clone
+$ git clone https://github.com/jeandsontb/poke-next.git
+
+# Rodar o comando
+$ npm run install ou yarn
+
+# Rodar o comando
+$ npm run dev ou yarn dev
 
 ```
 
