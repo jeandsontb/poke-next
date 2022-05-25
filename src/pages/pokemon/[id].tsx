@@ -121,7 +121,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
     paths: pokemons156.map((id) => ({
       params: { id },
     })),
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
@@ -136,9 +136,21 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   //   sprites: data.sprites,
   // };
 
+  const pokemon = await getPokemonInfo(id);
+
+  if (!pokemon) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
   return {
     props: {
-      pokemon: await getPokemonInfo(id),
+      pokemon,
     },
+    revalidate: 60 * 60 * 24,
   };
 };
